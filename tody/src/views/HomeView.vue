@@ -1,8 +1,48 @@
 <script setup lang="ts">
+import ButtonComponent from '@/components/atoms/ButtonComponent.vue';
+import InputComponentVue from '@/components/atoms/InputComponent.vue';
+import FilterItemComponentVue from '@/components/atoms/FilterItemComponent.vue';
+import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
+
+
 </script>
 
 <template>
-  <main>
-    Home
+  <main class="w-full flex items-start justify-center sm:p-4">
+    <div
+      class="flex w-full max-w-md py-16 px-8 flex-col justify-center items-start gap-4 rounded-lg bg-white shadow-sm sm:bg-gray-50 sm:h-auto sm:border sm:border-200">
+      <h1 class="text-2xl leading-8 font-medium">Tasks</h1>
+      <span class="text-base leading-6 font-normal">There are the tasks that you have and completed</span>
+      <div class="flex self-stretch gap-4">
+        <InputComponentVue placeholder="Add new task"/>
+        <ButtonComponent>Add Task</ButtonComponent>
+      </div>
+      <div class="flex self-stretch gap-2">
+        <FilterItemComponentVue status="Selected">
+          All
+        </FilterItemComponentVue>
+        <FilterItemComponentVue status="Unselected">
+          Pending
+        </FilterItemComponentVue>
+        <FilterItemComponentVue status="Unselected">
+          Completed
+        </FilterItemComponentVue>
+      </div>
+      <div class="flex flex-col self-stretch overflow-y-auto">
+        <TaskItemComponentVue title="Task 1"/>
+        <TaskItemComponentVue title="Task 2"/>
+        <TaskItemComponentVue title="Task 3"/>
+        <TaskItemComponentVue title="Task 4"/>
+        <TaskItemComponentVue title="Task 5"/>
+        <TaskItemComponentVue title="Task 6"/>
+
+        <TaskItemComponentVue title="Task 4"/>
+        <TaskItemComponentVue title="Task 5"/>
+        <TaskItemComponentVue title="Task 6"/>
+        <TaskItemComponentVue title="Task 4"/>
+          <TaskItemComponentVue title="Task 5"/>
+          <TaskItemComponentVue title="Task 6"/>
+      </div>
+    </div>
   </main>
 </template>
