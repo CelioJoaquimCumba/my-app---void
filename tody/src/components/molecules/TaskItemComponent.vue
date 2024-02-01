@@ -1,8 +1,8 @@
 <script setup lang="ts">
     import type { PropType } from 'vue';
 import CheckComponentVue from '../atoms/CheckComponent.vue';
-    import TaskOptionsComponentVue from '../atoms/TaskOptionsComponent.vue';
-    const { checked, toggleCheck, title } = defineProps({
+import TaskOptionDropdownVue from '../molecules/TaskOptionDropdown.vue'
+    const { checked, toggleCheck, title, handleDelete } = defineProps({
         title : {
             type: String
         }, 
@@ -10,6 +10,9 @@ import CheckComponentVue from '../atoms/CheckComponent.vue';
             type: Boolean
         },
         toggleCheck: {
+            type: Function as PropType<() => void>
+        },
+        handleDelete : {
             type: Function as PropType<() => void>
         }
     })
@@ -24,7 +27,7 @@ import CheckComponentVue from '../atoms/CheckComponent.vue';
         <span class="text-base leading-6 font-normal flex-grow">
             {{ title }}
         </span>
-        <TaskOptionsComponentVue/>
+        <TaskOptionDropdownVue :handleClick="handleDelete"/>
         
     </div>
 </template>

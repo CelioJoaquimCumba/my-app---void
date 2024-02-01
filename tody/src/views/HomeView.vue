@@ -57,11 +57,19 @@
   const taskInput = ref('')
 
   const handleSubmit = () => {
+    if(taskInput.value === '') {
+      alert("Please insert a task")
+      return
+    }
     tasks.value.unshift({
       title: taskInput.value,
       checked: false
     })
     taskInput.value = ""
+  }
+
+  const handleDelete = (index: number) => {
+    tasks.value.splice(index, 1)
   }
 
 
@@ -82,7 +90,7 @@
 
       </div>
       <div class="flex flex-col self-stretch overflow-y-auto h-96" v-if="filteredTasks.length > 0">
-        <TaskItemComponentVue v-for="(task, index) in filteredTasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)"/>
+        <TaskItemComponentVue v-for="(task, index) in filteredTasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)" :handleDelete="()=>handleDelete(index)"/>
       </div>
       <div v-else class="text-center text-muted-foreground text-base leading-6 font-thin self-stretch">No tasks yet. add one</div>
     </div>
