@@ -1,13 +1,34 @@
 <script setup lang="ts">
-import ButtonComponent from '@/components/atoms/ButtonComponent.vue';
-import InputComponentVue from '@/components/atoms/InputComponent.vue';
-import FilterItemComponentVue from '@/components/atoms/FilterItemComponent.vue';
-import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
-import { ref } from 'vue';
-const checked = ref(false)
-const toggleCheck = () => {
-  checked.value = !checked.value
-}
+  import ButtonComponent from '@/components/atoms/ButtonComponent.vue';
+  import InputComponentVue from '@/components/atoms/InputComponent.vue';
+  import FilterItemComponentVue from '@/components/atoms/FilterItemComponent.vue';
+  import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
+  import { ref } from 'vue';
+  const checked = ref(false)
+
+  const tasks = ref([
+    {
+      title: 'Task 1',
+      checked: false
+    },
+    {
+      title: 'Task 2',
+      checked: false
+    },
+    {
+      title: 'Task 3',
+      checked: false
+    },
+    {
+      title: 'Task 4',
+      checked: false
+    }
+  ])
+
+  const toggleCheck = (index: number) => {
+    tasks.value[index].checked = !tasks.value[index].checked;
+  };
+
 
 
 </script>
@@ -34,19 +55,7 @@ const toggleCheck = () => {
         </FilterItemComponentVue>
       </div>
       <div class="flex flex-col self-stretch overflow-y-auto h-64">
-        <TaskItemComponentVue title="Task 1" :checked="checked" :toggleCheck="toggleCheck"/>
-        <TaskItemComponentVue title="Task 2"/>
-        <TaskItemComponentVue title="Task 3"/>
-        <TaskItemComponentVue title="Task 4"/>
-        <TaskItemComponentVue title="Task 5"/>
-        <TaskItemComponentVue title="Task 6"/>
-
-        <TaskItemComponentVue title="Task 4"/>
-        <TaskItemComponentVue title="Task 5"/>
-        <TaskItemComponentVue title="Task 6"/>
-        <TaskItemComponentVue title="Task 4"/>
-          <TaskItemComponentVue title="Task 5"/>
-          <TaskItemComponentVue title="Task 6"/>
+        <TaskItemComponentVue v-for="(task, index) in tasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)"/>
       </div>
     </div>
   </main>
