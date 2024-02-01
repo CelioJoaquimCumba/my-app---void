@@ -3,7 +3,7 @@
   import InputComponentVue from '@/components/atoms/InputComponent.vue';
   import FilterItemComponentVue from '@/components/atoms/FilterItemComponent.vue';
   import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
   const checked = ref(false)
 
   const tasks = ref([
@@ -38,10 +38,33 @@
       selected: false
     }
   ])
+  const filteredTasks = computed(() => {
+    return tasks.value.filter((task) => {
+      if (filters.value[0].selected) {
+        return true;
+      } else if (filters.value[1].selected && !task.checked) {
+        return true;
+      } else if (filters.value[2].selected && task.checked) {
+        return true;
+      }
+      return false;
+    });
+  });
+  
 
   const toggleCheck = (index: number) => {
     tasks.value[index].checked = !tasks.value[index].checked;
   };
+
+  const handleFilter = (index: number) => {
+    for (let i = 0; i < filters.value.length; i++) {
+      if (i === index) {
+        filters.value[i].selected = true;
+      } else {
+        filters.value[i].selected = false;
+      }
+    }
+  }
 
 
 
@@ -58,11 +81,11 @@
         <ButtonComponent>Add Task</ButtonComponent>
       </div>
       <div class="flex self-stretch gap-2">
-        <FilterItemComponentVue v-for="(filter, index) in filters" :key="index" :selected="filter.selected" :title="filter.title"/>
+        <FilterItemComponentVue v-for="(filter, index) in filters" :key="index" :selected="filter.selected" :title="filter.title" :handleSelect="()=>handleFilter(index)"/>
 
       </div>
       <div class="flex flex-col self-stretch overflow-y-auto h-64">
-        <TaskItemComponentVue v-for="(task, index) in tasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)"/>
+        <TaskItemComponentVue v-for="(task, index) in filteredTasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)"/>
       </div>
     </div>
   </main>
