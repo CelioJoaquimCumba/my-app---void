@@ -68,7 +68,7 @@
 </script>
 
 <template>
-  <main class="w-full flex items-start justify-center sm:p-4">
+  <main class="w-full flex items-start justify-center sm:p-4 ">
     <div
       class="flex w-full max-w-md py-16 px-8 flex-col justify-center items-start gap-4 rounded-lg bg-background shadow-sm sm:h-auto sm:border sm:border-200">
       <h1 class="text-2xl leading-8 font-medium">Tasks</h1>
@@ -81,9 +81,10 @@
         <FilterItemComponentVue v-for="(filter, index) in filters" :key="index" :selected="filter.selected" :title="filter.title" :handleSelect="()=>handleFilter(index)"/>
 
       </div>
-      <div class="flex flex-col self-stretch overflow-y-auto h-64">
+      <div class="flex flex-col self-stretch overflow-y-auto h-96" v-if="filteredTasks.length > 0">
         <TaskItemComponentVue v-for="(task, index) in filteredTasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)"/>
       </div>
+      <div v-else class="text-center text-muted-foreground text-base leading-6 font-thin self-stretch">No tasks yet. add one</div>
     </div>
   </main>
 </template>
