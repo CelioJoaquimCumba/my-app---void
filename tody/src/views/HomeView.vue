@@ -5,24 +5,12 @@
   import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
   import { computed, ref } from 'vue';
 
-  const tasks = ref([
-    {
-      title: 'Task 1',
-      checked: false
-    },
-    {
-      title: 'Task 2',
-      checked: false
-    },
-    {
-      title: 'Task 3',
-      checked: false
-    },
-    {
-      title: 'Task 4',
-      checked: false
-    }
-  ])
+  interface Task {
+    title: string;
+    checked: boolean;
+  }
+
+  const tasks = ref<Array<Task>>([])
   const filters = ref([
     {
       title: 'All',
@@ -85,11 +73,11 @@
       class="flex w-full max-w-md py-16 px-8 flex-col justify-center items-start gap-4 rounded-lg bg-background shadow-sm sm:h-auto sm:border sm:border-200">
       <h1 class="text-2xl leading-8 font-medium">Tasks</h1>
       <span class="text-base leading-6 font-normal">There are the tasks that you have and completed</span>
-      <div class="flex self-stretch gap-4">
+      <form class="flex self-stretch gap-4" @submit.prevent="handleSubmit">
         <InputComponentVue placeholder="Add new task" v-model="taskInput"/>
-        <ButtonComponent @click="handleSubmit">Add Task</ButtonComponent>
-      </div>
-      <div class="flex self-stretch gap-2">
+        <ButtonComponent type="submit" >Add Task</ButtonComponent>
+      </form>
+      <div class="flex self-stretch gap-2" v-if="tasks.length > 0">
         <FilterItemComponentVue v-for="(filter, index) in filters" :key="index" :selected="filter.selected" :title="filter.title" :handleSelect="()=>handleFilter(index)"/>
 
       </div>

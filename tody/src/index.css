@@ -52,7 +52,7 @@
 
 
 ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.25rem;
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -62,7 +62,7 @@
 
 ::-webkit-scrollbar-thumb:vertical {
   height: 1rem;
-  background-color: hsl(var(--muted-foreground));
+  background-color: hsl(var(--primary));
   -webkit-border-radius: 1rem;
 }
 
