@@ -4,7 +4,6 @@
   import FilterItemComponentVue from '@/components/atoms/FilterItemComponent.vue';
   import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
   import { computed, ref } from 'vue';
-  const checked = ref(false)
 
   const tasks = ref([
     {
@@ -54,6 +53,7 @@
 
   const toggleCheck = (index: number) => {
     tasks.value[index].checked = !tasks.value[index].checked;
+    console.log(taskInput.value)
   };
 
   const handleFilter = (index: number) => {
@@ -66,6 +66,15 @@
     }
   }
 
+  const taskInput = ref('')
+
+  const handleSubmit = () => {
+    tasks.value.unshift({
+      title: taskInput.value,
+      checked: false
+    })
+    taskInput.value = ""
+  }
 
 
 </script>
@@ -77,8 +86,8 @@
       <h1 class="text-2xl leading-8 font-medium">Tasks</h1>
       <span class="text-base leading-6 font-normal">There are the tasks that you have and completed</span>
       <div class="flex self-stretch gap-4">
-        <InputComponentVue placeholder="Add new task"/>
-        <ButtonComponent>Add Task</ButtonComponent>
+        <InputComponentVue placeholder="Add new task" v-model="taskInput"/>
+        <ButtonComponent @click="handleSubmit">Add Task</ButtonComponent>
       </div>
       <div class="flex self-stretch gap-2">
         <FilterItemComponentVue v-for="(filter, index) in filters" :key="index" :selected="filter.selected" :title="filter.title" :handleSelect="()=>handleFilter(index)"/>
