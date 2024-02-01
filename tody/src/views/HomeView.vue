@@ -81,7 +81,7 @@
       class="flex w-full max-w-md py-16 px-8 flex-col justify-center items-start gap-4 rounded-lg bg-background shadow-sm sm:h-auto sm:border sm:border-200">
       <h1 class="text-2xl leading-8 font-medium">Tasks</h1>
       <span class="text-base leading-6 font-normal">There are the tasks that you have and completed</span>
-      <form class="flex flex-col sm:flex-row self-stretch gap-4" @submit.prevent="handleSubmit">
+      <form class="flex flex-col sm:flex-row self-stretch gap-4 items-center justify-center" @submit.prevent="handleSubmit">
         <InputComponentVue placeholder="Add new task" v-model="taskInput"/>
         <ButtonComponent type="submit" >Add Task</ButtonComponent>
       </form>
