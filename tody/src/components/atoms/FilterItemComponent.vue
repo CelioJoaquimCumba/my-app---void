@@ -9,7 +9,7 @@ const {status} = defineProps({
 </script>
 
 <template>
-<div class="flex flex-col px-4 py-2 rounded-lg gap-0.5 text-base leading-6 font-normal" :class="{ 'bg-green-600 text-white' : status === 'Selected', 'bg-gray-100' : status === 'Unselected'}">
+<div class="flex flex-col px-4 py-2 rounded-lg gap-0.5 text-base leading-6 font-normal" :class="{ 'bg-primary text-background' : status === 'Selected', ' bg-muted' : status === 'Unselected'}">
         <slot></slot>
     </div>
 </template>

@@ -10,7 +10,7 @@ import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
 <template>
   <main class="w-full flex items-start justify-center sm:p-4">
     <div
-      class="flex w-full max-w-md py-16 px-8 flex-col justify-center items-start gap-4 rounded-lg bg-white shadow-sm sm:bg-gray-50 sm:h-auto sm:border sm:border-200">
+      class="flex w-full max-w-md py-16 px-8 flex-col justify-center items-start gap-4 rounded-lg bg-background shadow-sm sm:h-auto sm:border sm:border-200">
       <h1 class="text-2xl leading-8 font-medium">Tasks</h1>
       <span class="text-base leading-6 font-normal">There are the tasks that you have and completed</span>
       <div class="flex self-stretch gap-4">
@@ -28,7 +28,7 @@ import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
           Completed
         </FilterItemComponentVue>
       </div>
-      <div class="flex flex-col self-stretch overflow-y-auto">
+      <div class="flex flex-col self-stretch overflow-y-auto h-64">
         <TaskItemComponentVue title="Task 1"/>
         <TaskItemComponentVue title="Task 2"/>
         <TaskItemComponentVue title="Task 3"/>
