@@ -11,7 +11,7 @@ const handleSubmit = () => {
 <template>
     <main class="w-full h-screen flex items-center justify-center">
         <form
-            class="flex w-full max-w-md py-16 px-12 flex-col justify-center items-start gap-4 rounded-sm bg-white  shadow-sm  sm:h-auto sm:border sm:border-200" @submit.prevent="handleSubmit">
+            class="flex w-full max-w-md py-16 px-12 flex-col justify-center items-start gap-4 rounded-sm bg-white  sm:shadow-sm  sm:h-auto sm:border sm:border-200" @submit.prevent="handleSubmit">
             <h1 class="text-2xl leading-8 font-medium">Create an account</h1>
             <span class=" text-base leading-6 font-normal">Create an account to store your tasks</span>
             <InputComponent label="Email" placeholder="Insert your email" />
