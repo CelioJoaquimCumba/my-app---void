@@ -24,6 +24,20 @@
       checked: false
     }
   ])
+  const filters = ref([
+    {
+      title: 'All',
+      selected: true
+    },
+    {
+      title: 'Pending',
+      selected: false
+    },
+    {
+      title: 'Completed',
+      selected: false
+    }
+  ])
 
   const toggleCheck = (index: number) => {
     tasks.value[index].checked = !tasks.value[index].checked;
@@ -44,15 +58,8 @@
         <ButtonComponent>Add Task</ButtonComponent>
       </div>
       <div class="flex self-stretch gap-2">
-        <FilterItemComponentVue status="Selected">
-          All
-        </FilterItemComponentVue>
-        <FilterItemComponentVue status="Unselected">
-          Pending
-        </FilterItemComponentVue>
-        <FilterItemComponentVue status="Unselected">
-          Completed
-        </FilterItemComponentVue>
+        <FilterItemComponentVue v-for="(filter, index) in filters" :key="index" :selected="filter.selected" :title="filter.title"/>
+
       </div>
       <div class="flex flex-col self-stretch overflow-y-auto h-64">
         <TaskItemComponentVue v-for="(task, index) in tasks" :key="index" :title="task.title" :checked="task.checked" :toggleCheck="()=>toggleCheck(index)"/>
