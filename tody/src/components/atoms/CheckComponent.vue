@@ -12,6 +12,6 @@ import type { PropType } from 'vue';
 </script>
 
 <template>
-    <div class="flex w-3 h-3 rounded-sm" :class="{ 'bg-primary' : checked , 'bg-white border border-input' : !checked}" @click="handleClick">
+    <div class="flex w-4 h-4 rounded-sm" :class="{ 'bg-primary' : checked , 'bg-white border border-input' : !checked}" @click="handleClick">
     </div>
 </template>
