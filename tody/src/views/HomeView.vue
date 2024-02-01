@@ -3,6 +3,11 @@ import ButtonComponent from '@/components/atoms/ButtonComponent.vue';
 import InputComponentVue from '@/components/atoms/InputComponent.vue';
 import FilterItemComponentVue from '@/components/atoms/FilterItemComponent.vue';
 import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
+import { ref } from 'vue';
+const checked = ref(false)
+const toggleCheck = () => {
+  checked.value = !checked.value
+}
 
 
 </script>
@@ -29,7 +34,7 @@ import TaskItemComponentVue from '@/components/molecules/TaskItemComponent.vue';
         </FilterItemComponentVue>
       </div>
       <div class="flex flex-col self-stretch overflow-y-auto h-64">
-        <TaskItemComponentVue title="Task 1"/>
+        <TaskItemComponentVue title="Task 1" :checked="checked" :toggleCheck="toggleCheck"/>
         <TaskItemComponentVue title="Task 2"/>
         <TaskItemComponentVue title="Task 3"/>
         <TaskItemComponentVue title="Task 4"/>
