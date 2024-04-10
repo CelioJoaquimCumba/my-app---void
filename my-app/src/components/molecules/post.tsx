@@ -1,8 +1,8 @@
 import React from "react"
-import { View, Text } from "react-native"
+import { View, Text, ScrollView, Image } from "react-native"
 import { EvilIcons, SimpleLineIcons } from '@expo/vector-icons';
 
-export const Post = ({author, timeStamp, message}: {author: string, timeStamp: string, message: string}) => {
+export const Post = ({author, timeStamp, message, images}: {author: string, timeStamp: string, message: string, images: Array<string>}) => {
 
     return (
         <View className="flex flex-col space-y-4 p-4 border border-gray-200">
@@ -28,6 +28,14 @@ export const Post = ({author, timeStamp, message}: {author: string, timeStamp: s
                 <Text className="text-black text-lg font-base">
                     {message}
                 </Text>
+            </section>
+            <section>
+                <ScrollView horizontal>
+                    <Image source={{uri: images[0]}} className="w-80 h-80" />
+                    {images.filter((image) => image !== images[0]).map((image) => (
+                        <Image source={{uri: image}} className="w-32 h-32" />
+                    ))}
+                </ScrollView>
             </section>
         </View>
     )
