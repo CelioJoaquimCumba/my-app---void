@@ -30,8 +30,7 @@ const dummy_posts = [
     }
 ]
 
-export const MainPage = async () => {
-    const {isConnected} = await NetInfo.fetch()
+export const MainPage = () => {
     const [posts, setPosts] = useState(dummy_posts)
     const { user } = useAuth()
     useEffect(() => {
@@ -46,35 +45,38 @@ export const MainPage = async () => {
         requestPosts()
     })
     useEffect(() => {
-        const submitPost = async(post: any) => {
-            if(!user) {
-                throw new Error("User not found")
-            }
-            await makePost(user?.id, post.message, post.images)
-        }
-        if(isConnected) {
-            const submitPosts = async () => {
-                try {
-                    const posts = await getPosts()
-                    if(posts && posts.length > 0) {
-                        posts.map((post, index) => {
-                            submitPost(post)
-                        })
-                    }
-                    await removePosts()
-                } catch(e) {
-                    console.log(e)
+        const checkInternet = async () => {
+            const {isConnected} = await NetInfo.fetch()
+            const submitPost = async(post: any) => {
+                if(!user) {
+                    throw new Error("User not found")
                 }
+                await makePost(user?.id, post.message, post.images)
             }
-            submitPosts()
+            if(isConnected) {
+                const submitPosts = async () => {
+                    try {
+                        const posts = await getPosts()
+                        if(posts && posts.length > 0) {
+                            posts.map((post, index) => {
+                                submitPost(post)
+                            })
+                        }
+                        await removePosts()
+                    } catch(e) {
+                        console.log(e)
+                    }
+                }
+                submitPosts()
+            }
         }
-    }, [isConnected])
+    }, [])
     return(
         <View className="flex flex-col space-y-4 p-4 border border-gray-200">
             <NavBar />
             <CreatePost />
             <ScrollView>
-                {posts.map((post, index) => <Post key={index} author={post.author} timeStamp={post.timeStamp} message={post.message} images={post.images}/>) }
+                {dummy_posts.map((post, index) => <Post key={index} author={post.author} timeStamp={post.timeStamp} message={post.message} images={post.images}/>) }
             </ScrollView>
             <BottomBar />
         </View>

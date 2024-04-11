@@ -1,4 +1,4 @@
-import { Image, View } from "react-native"
+import { Image, View, Text } from "react-native"
 import { Input } from "../atoms/input"
 import { Button } from "../atoms/button"
 import { AntDesign } from '@expo/vector-icons';
@@ -53,7 +53,9 @@ export const CreatePost = () => {
             <View className={`flex flex-row justify-between ${hide  && "hidden"}`}>
 
             </View>
-            <Button onPress={submitPost}>Post</Button>
+            <Button onPress={submitPost}>
+                <Text>Post</Text>
+            </Button>
         </View>
     )
 }

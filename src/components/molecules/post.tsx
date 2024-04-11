@@ -6,9 +6,9 @@ export const Post = ({author, timeStamp, message, images}: {author: string, time
 
     return (
         <View className="flex flex-col space-y-4 p-4 border border-gray-200">
-            <section className="flex justify-between ">
+            <View className="flex justify-between ">
                 <View>
-                    <img src="avatar" alt="avatar" className="w-16 h-16 rounded-full"/>
+                    <Image src="avatar" alt="avatar" className="w-16 h-16 rounded-full"/>
                     <View>
                         <Text className="text-xl text-black font-semibold">
                             {author}
@@ -17,26 +17,26 @@ export const Post = ({author, timeStamp, message, images}: {author: string, time
                             {timeStamp}
                         </Text>
                     </View>
-                    <View classname="flex space-x-4">
+                    <View className="flex space-x-4">
                         <EvilIcons name="external-link" size={24} color="black" />
                         <SimpleLineIcons name="options-vertical" size={24} color="black" />
                     </View>
                 </View>
 
-            </section>
-            <section>
+            </View>
+            <View>
                 <Text className="text-black text-lg font-base">
                     {message}
                 </Text>
-            </section>
-            <section>
+            </View>
+            <View>
                 <ScrollView horizontal>
                     <Image source={{uri: images[0]}} className="w-80 h-80" />
                     {images.filter((image) => image !== images[0]).map((image) => (
                         <Image source={{uri: image}} className="w-32 h-32" />
                     ))}
                 </ScrollView>
-            </section>
+            </View>
         </View>
     )
 }
