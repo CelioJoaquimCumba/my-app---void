@@ -72,7 +72,7 @@ export const MainPage = () => {
         }
     }, [])
     return(
-        <View className="flex flex-col space-y-4 border border-gray-200">
+        <View className="flex flex-col space-y-4 border border-gray-200 pt-8">
             <NavBar />
             <CreatePost />
             <ScrollView>

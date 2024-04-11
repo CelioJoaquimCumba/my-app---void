@@ -5,7 +5,7 @@ import { Text, TextInput, TextInputProps, TouchableOpacity, View } from "react-n
 import { Feather } from "@expo/vector-icons"
 export interface InputProps
   extends TextInputProps {
-    label: string
+    label?: string
     isInvalid?: boolean
     hint?:string|undefined
     value?:string|undefined,
@@ -20,9 +20,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setVisible(!visible)
     }
     return (
-        <View className="w-full space-y-2 ">
+        <View className="space-y-2 self-stretch flex-grow">
             <View className="flex">
-            <Text>{label}</Text>
+              {label && <Text>{label}</Text>}
               <View className="flex flex-row items-end space-x-2">
                 <TextInput
                   autoCapitalize="none"

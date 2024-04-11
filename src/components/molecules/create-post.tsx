@@ -2,7 +2,7 @@ import { Image, View, Text } from "react-native"
 import { Input } from "../atoms/input"
 import { Button } from "../atoms/button"
 import { AntDesign } from '@expo/vector-icons';
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import React from "react";
 import { makePost } from "../../api/postApi";
 import { useAuth } from "../../providers/UserProvider";
@@ -33,29 +33,32 @@ export const CreatePost = () => {
         }
     }
 
-    const handleMessage = (e: React.SyntheticEvent) => {
-        if(e.currentTarget.value === ""){
+    const handleMessage = (text: string) => {
+        console.log(text)
+        setMessage(text);
+    }
+    useEffect(() => {
+        if(message === "") {
             handleHide(true)
         } else {
             handleHide(false)
         }
-        setMessage((e.target as HTMLInputElement).value );
-    }
+        console.log(message)
+    }, [message])
     return (
-        <View className="flex w-full">
-            <View>
-                <Image source={{uri: "avatar"}} className="w-32 h-32"/>
-                <Input label="Create Post" placeholder="What's on your mind?" className="flex flex-grow self-stretch" value="message" onChange={handleMessage}/>
-                <View className="flex rounded-full bg-white p-4">
-                    <AntDesign name="picture" size={16} color="black" />
-                </View>
+        <View className="flex flex-col self-stretch p-4">
+            <View className="flex flex-row items-start space-x-2">
+                <Image src={'https://picsum.photos/200'} alt="avatar" className="w-8 aspect-square rounded-full"/>
+                <Input placeholder="Begin a post" value={message} onChangeText={handleMessage}/>
+                <Button className="flex rounded-full bg-teal-100 p-2 items-center justify-center">
+                    <AntDesign name="picture" color="black" size={16}/>
+                </Button>
             </View>
-            <View className={`flex flex-row justify-between ${hide  && "hidden"}`}>
-
+            <View className={`${hide  ? "hidden" : "flex"} flex-row justify-between`}>
+                <Button onPress={submitPost}>
+                    <Text>{hide ? "true" : "false"}</Text>
+                </Button>
             </View>
-            <Button onPress={submitPost}>
-                <Text>Post</Text>
-            </Button>
         </View>
     )
 }
