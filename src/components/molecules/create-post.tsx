@@ -1,7 +1,7 @@
 import { Image, View, Text } from "react-native"
 import { Input } from "../atoms/input"
 import { Button } from "../atoms/button"
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { ChangeEvent, useEffect, useState } from "react";
 import React from "react";
 import { makePost } from "../../api/postApi";
@@ -46,7 +46,7 @@ export const CreatePost = () => {
         console.log(message)
     }, [message])
     return (
-        <View className="flex flex-col self-stretch p-4">
+        <View className="flex flex-col self-stretch p-4 space-y-2">
             <View className="flex flex-row items-start space-x-2">
                 <Image src={'https://picsum.photos/200'} alt="avatar" className="w-8 aspect-square rounded-full"/>
                 <Input placeholder="Begin a post" value={message} onChangeText={handleMessage}/>
@@ -55,8 +55,9 @@ export const CreatePost = () => {
                 </Button>
             </View>
             <View className={`${hide  ? "hidden" : "flex"} flex-row justify-between`}>
-                <Button onPress={submitPost}>
-                    <Text>{hide ? "true" : "false"}</Text>
+                <Button onPress={submitPost} className="w-full">
+                    <Text className="text-white">Post</Text>
+                    <FontAwesome name="send" color="white" size={16}/>
                 </Button>
             </View>
         </View>

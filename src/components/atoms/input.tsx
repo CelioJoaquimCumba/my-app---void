@@ -20,13 +20,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       setVisible(!visible)
     }
     return (
-        <View className="space-y-2 self-stretch flex-grow">
+        <View className="space-y-2 self-stretch flex-grow flex-shrink">
             <View className="flex">
               {label && <Text>{label}</Text>}
               <View className="flex flex-row items-end space-x-2">
                 <TextInput
                   autoCapitalize="none"
                   secureTextEntry={!visible}
+                  multiline
+                  numberOfLines={4}
                   className={cn(
                     `flex h-10 flex-grow rounded-md  px-3 py-2 ring-offset-4 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-900 disabled:cursor-not-allowed disabled:opacity-50 border ${isInvalid ? "border-red-500" :"border-gray-300 focus:border-black"}`,
                     className
