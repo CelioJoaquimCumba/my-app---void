@@ -5,9 +5,9 @@ import { Button } from "../atoms/button";
 export const NavBar = () => {
 
     return (
-        <View className="flex flex-col space-y-4 p-4">
+        <View className="flex flex-col space-y-4 px-4 self-stretch">
             <View className="flex flex-row justify-between ">
-                <Text className="text-2xl">Home</Text>
+                <Text className="text-xl">Home</Text>
                 <Button variant={"ghost"}>
                     <Feather name="bell" size={24} color="black" />
                 </Button>

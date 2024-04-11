@@ -48,8 +48,8 @@ export const Post = ({author, timeStamp, message, images}: PostProps) => {
                 <View className="flex space-y-2">
                     <Image source={{uri: images[0]}} className="w-full aspect-square rounded-md" />
                     <ScrollView horizontal className="flex space-x-2">
-                        {images.filter((image, index) => index !== 0).map((image) => (
-                            <Image source={{uri: image}} key={image} className="w-40 aspect-square rounded-md" />
+                        {images.filter((image, index) => index !== 0).map((image, index) => (
+                            <Image source={{uri: image}} key={index} className="w-40 aspect-square rounded-md" />
                         ))}
                     </ScrollView>
                 </View>

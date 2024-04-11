@@ -10,6 +10,19 @@ import { useAuth } from "../providers/UserProvider"
 import { removePosts } from "../utils/posts"
 
 const dummy_posts = [
+    
+    {
+        id: "456",
+        author: "Johanan",
+        timeStamp: "10:00",
+        message: "Loream ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
+    },
+    {
+        id: "234",
+        author: "Johann",
+        timeStamp: "10:00",
+        message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
+    },
     {
         id: "123",
         author: "Johann",
@@ -17,20 +30,6 @@ const dummy_posts = [
         message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
         images: ["https://picsum.photos/400", "https://picsum.photos/400", "https://picsum.photos/400", "https://picsum.photos/400"]
     },
-    {
-        id: "234",
-        author: "Johann",
-        timeStamp: "10:00",
-        message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
-        images: ["https://freestyle-images.s3.us-east-2.amazonaws.com/IMG_20230223_093405.jpg"]
-    },
-    {
-        id: "456",
-        author: "Johann",
-        timeStamp: "10:00",
-        message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
-        images: ["https://freestyle-images.s3.us-east-2.amazonaws.com/IMG_20230223_093405.jpg"]
-    }
 ]
 
 export const MainPage = () => {
@@ -75,10 +74,10 @@ export const MainPage = () => {
         }
     }, [])
     return(
-        <View className="flex flex-col space-y-4 border border-gray-200 pt-8">
+        <View className="flex flex-col space-y-4 border border-gray-200 pt-8 h-full items-center">
             <NavBar />
             <CreatePost />
-            <ScrollView>
+            <ScrollView className="">
                 {dummy_posts.map((post, index) => <Post key={index} author={post.author} timeStamp={post.timeStamp} message={post.message} images={post.images}/>) }
             </ScrollView>
             <BottomBar />

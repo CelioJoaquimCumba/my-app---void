@@ -19,7 +19,7 @@ export const CreatePost = () => {
     }
     
     const submitPost = async () => {
-         const {isConnected} = await NetInfo.fetch()
+        const {isConnected} = await NetInfo.fetch()
         try {
             if(!isConnected) {
                 await storePosts({message, timestamp: new Date().toISOString(), images: ["https://freestyle-images.s3.us-east-2.amazonaws.com/IMG_20230223_093405.jpg"]})

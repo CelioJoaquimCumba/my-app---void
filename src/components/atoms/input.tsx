@@ -28,7 +28,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   autoCapitalize="none"
                   secureTextEntry={!visible}
                   multiline
-                  numberOfLines={4}
+                  numberOfLines={4 }
                   className={cn(
                     `flex h-10 flex-grow rounded-md  px-3 py-2 ring-offset-4 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-900 disabled:cursor-not-allowed disabled:opacity-50 border ${isInvalid ? "border-red-500" :"border-gray-300 focus:border-black"}`,
                     className
