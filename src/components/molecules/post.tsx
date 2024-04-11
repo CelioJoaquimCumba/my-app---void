@@ -17,9 +17,9 @@ export const Post = ({author, timeStamp, message, images}: PostProps) => {
             <View className="flex justify-between ">
                 <View className="flex flex-row justify-between">
                     <View className="flex flex-row space-x-2 items-center">
-                    <Image src='https://picsum.photos/200' alt="avatar" className="w-8 h-8 rounded-full"/>
+                    <Image src='https://picsum.photos/200' alt="avatar" className="w-8 aspect-square rounded-full"/>
                     <View>
-                        <Text className="text-xl text-black font-semibold">
+                        <Text className="text-base text-black font-semibold">
                             {author}
                         </Text>
                         <Text className="text-gray-300 text-sm font-medium">
