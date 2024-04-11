@@ -1,42 +1,59 @@
 import React from "react"
 import { View, Text, ScrollView, Image } from "react-native"
-import { EvilIcons, SimpleLineIcons } from '@expo/vector-icons';
+import { Feather, SimpleLineIcons } from '@expo/vector-icons';
+import { Button } from "../atoms/button";
 
-export const Post = ({author, timeStamp, message, images}: {author: string, timeStamp: string, message: string, images: Array<string>}) => {
+interface PostProps {
+    author: string
+    timeStamp: string
+    message: string
+    images?: Array<string>
+}
+
+export const Post = ({author, timeStamp, message, images}: PostProps) => {
 
     return (
         <View className="flex flex-col space-y-4 p-4 border border-gray-200">
             <View className="flex justify-between ">
-                <View>
-                    <Image src="avatar" alt="avatar" className="w-16 h-16 rounded-full"/>
+                <View className="flex flex-row justify-between">
+                    <View className="flex flex-row space-x-2 items-center">
+                    <Image src='https://picsum.photos/200' alt="avatar" className="w-8 h-8 rounded-full"/>
                     <View>
                         <Text className="text-xl text-black font-semibold">
                             {author}
                         </Text>
-                        <Text className="text-gray-500 text-sm font-medium">
+                        <Text className="text-gray-300 text-sm font-medium">
                             {timeStamp}
                         </Text>
                     </View>
-                    <View className="flex space-x-4">
-                        <EvilIcons name="external-link" size={24} color="black" />
-                        <SimpleLineIcons name="options-vertical" size={24} color="black" />
+
+                    </View>
+                    <View className="flex flex-row space-x-1">
+                        <Button variant={"ghost"}>
+                            <Feather name="external-link" size={16} color="black" />
+                        </Button>
+                        <Button variant={"ghost"}>
+                            <SimpleLineIcons name="options-vertical" size={12} color="black" />
+                        </Button>
                     </View>
                 </View>
-
             </View>
             <View>
                 <Text className="text-black text-lg font-base">
                     {message}
                 </Text>
             </View>
-            <View>
-                <ScrollView horizontal>
-                    <Image source={{uri: images[0]}} className="w-80 h-80" />
-                    {images.filter((image) => image !== images[0]).map((image) => (
-                        <Image source={{uri: image}} className="w-32 h-32" />
-                    ))}
-                </ScrollView>
-            </View>
+
+            {images && images.length > 0 &&
+                <View className="flex space-y-2">
+                    <Image source={{uri: images[0]}} className="w-full aspect-square rounded-md" />
+                    <ScrollView horizontal className="flex space-x-2">
+                        {images.filter((image, index) => index !== 0).map((image) => (
+                            <Image source={{uri: image}} key={image} className="w-40 aspect-square rounded-md" />
+                        ))}
+                    </ScrollView>
+                </View>
+            }
         </View>
     )
 }

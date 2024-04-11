@@ -11,18 +11,21 @@ import { removePosts } from "../utils/posts"
 
 const dummy_posts = [
     {
+        id: "123",
+        author: "Johann",
+        timeStamp: "10:00",
+        message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
+        images: ["https://picsum.photos/400", "https://picsum.photos/400", "https://picsum.photos/400", "https://picsum.photos/400"]
+    },
+    {
+        id: "234",
         author: "Johann",
         timeStamp: "10:00",
         message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
         images: ["https://freestyle-images.s3.us-east-2.amazonaws.com/IMG_20230223_093405.jpg"]
     },
     {
-        author: "Johann",
-        timeStamp: "10:00",
-        message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
-        images: ["https://freestyle-images.s3.us-east-2.amazonaws.com/IMG_20230223_093405.jpg"]
-    },
-    {
+        id: "456",
         author: "Johann",
         timeStamp: "10:00",
         message: "Lorem ipsum dolor sit amet consectetur adipiscing elit suscipit suscipit   ",
