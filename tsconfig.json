@@ -13,6 +13,6 @@
     "App.tsx",
     "my-app.d.ts",
     "App/**/*.tsx",
-    "main copy.tsx"
+    "copy.tsx"
   ]
 }

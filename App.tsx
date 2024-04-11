@@ -13,9 +13,6 @@ NativeWindStyleSheet.setOutput({
 export default function App() {
   return (
     <UserProvider>
-      <View className="bg-black p-4 ">
-        <Text className='text-3xl text-white'>Hello world</Text>
-      </View>
       <MainPage />
     </UserProvider>
   );
