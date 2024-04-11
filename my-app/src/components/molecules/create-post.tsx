@@ -2,7 +2,7 @@ import { Image, View } from "react-native"
 import { Input } from "../atoms/input"
 import { Button } from "../atoms/button"
 import { AntDesign } from '@expo/vector-icons';
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import React from "react";
 import { makePost } from "../../api/postApi";
 import { useAuth } from "../../providers/UserProvider";
@@ -33,7 +33,7 @@ export const CreatePost = () => {
         }
     }
 
-    const handleMessage = (e: React.FormEvent<HTMLInputElement>) => {
+    const handleMessage = (e: React.SyntheticEvent) => {
         if(e.currentTarget.value === ""){
             handleHide(true)
         } else {
