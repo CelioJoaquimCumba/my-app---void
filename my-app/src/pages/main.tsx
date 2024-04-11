@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react"
-import { NavBar } from "../molecules/navbar"
-import { CreatePost } from "../molecules/create-post"
-import { Post } from "../molecules/post"
+import { NavBar } from "../components/molecules/navbar"
+import { CreatePost } from "../components/molecules/create-post"
+import { Post } from "../components/molecules/post"
 import { ScrollView, View } from "react-native"
-import { BottomBar } from "../molecules/bottom-bar"
-import { getPosts, makePost } from "../../api/postApi"
+import { BottomBar } from "../components/molecules/bottom-bar"
+import { getPosts, makePost } from "../api/postApi"
 import NetInfo from '@react-native-community/netinfo'
-import { useAuth } from "../../providers/UserProvider"
-import { removePosts } from "../../utils/posts"
+import { useAuth } from "../providers/UserProvider"
+import { removePosts } from "../utils/posts"
 
 const dummy_posts = [
     {
